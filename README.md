@@ -1,5 +1,5 @@
 # Kaggle-Draper
-- Private repo -
+*Private repo*
 
 C'est ici qu'iront les fichiers --  mais pas les images, elles sont trop grosses. Localement, j'ai les dossiers "test" et "train" au meme niveau que "Kaggle-Draper". Ce sera plus facile si on utilise tous cette meme convention-la.
 
