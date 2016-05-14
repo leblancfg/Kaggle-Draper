@@ -11,4 +11,5 @@ Pour l'instant, j'ai commence a coder un petit script qui fera un "AKAZE stitchi
 On aura donc une liste de 20 probabilites chronologiques par *test image set*. Ce sera ensuite de l'algebre simple de cruncher ces valeurs-la pour arriver a une suite chronologique ordonnee, du genre (3,4,5,2,1). Essentiellement un probleme du genre "Alice est plus vieille que Jack, Antoine est plus jeune qu'Alice", etc. Voir sample_submission.csv pour voir quel format Kaggle accepte les solutions.
 
 More, *way* more to come! Reste a trouver comment on va pouvoir splitter nos efforts a trois!
+
 -fl
