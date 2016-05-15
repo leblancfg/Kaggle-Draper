@@ -4,7 +4,7 @@
 C'est ici qu'iront les fichiers --  mais pas les images, elles sont trop grosses. Localement, j'ai les dossiers "test" et "train" au meme niveau que "Kaggle-Draper". Ce sera plus facile si on utilise tous cette meme convention-la.
 
 
-Pour l'instant, j'ai commence a coder un petit script qui fera un "AKAZE stitching" pour chacune des permutations d'images par image set, i.e. 1&2, 1&3, 1&4, 1&5, 2&3, etc. En meme temps, ca creera un fichier .csv qui contient le *train target* en valeur binaire:
+Pour l'instant, j'ai commence a coder un petit script qui fera un [AKAZE stitching](https://www.kaggle.com/nigelcarpenter/draper-satellite-image-chronology/akaze-stitching "Kaggle script") pour chacune des permutations d'images par image set, i.e. 1&2, 1&3, 1&4, 1&5, 2&3, etc. En meme temps, ca creera un fichier .csv qui contient le *train target* en valeur binaire:
 - 1 si l'image de gauche est plus vieille,
 - 0 si l'image de droite est plus vieille.
 
