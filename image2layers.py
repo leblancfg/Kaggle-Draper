@@ -1,6 +1,19 @@
 import time
-
 start_time = time.time()
+
+import time
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+#%matplotlib inline
+from PIL import Image
+from PIL import ImageFilter
+import multiprocessing
+import random; random.seed(2016);
+import cv2
+import re
+import os, glob
+
 import warnings
 import cv2
 warnings.filterwarnings('ignore')
@@ -8,7 +21,6 @@ import multiprocessing
 from sklearn import ensemble
 from sklearn import pipeline, grid_search
 from sklearn.metrics import label_ranking_average_precision_score as lraps
-
 
 def image_features(path, tt, group, pic_no):
     im = cv2.imread(path)
@@ -24,6 +36,27 @@ f = open("data.csv", "w");
 col = ['path', 'tt', 'group', 'pic_no', 'individual_im_mean', 'rm', 'bm', 'gm']
 f.write((',').join(map(str, col)) + '\n')
 f.close()
+
+sample_sub = pd.read_csv('sample_submission.csv')
+train_files = pd.DataFrame([[f,f.split("/")[3].split(".")[0].split("_")[0],f.split("/")[3].split(".")[0].split("_")[1]] for f in glob.glob("../input/train_sm/*.jpeg")])
+train_files.columns = ['path', 'group', 'pic_no']
+test_files = pd.DataFrame([[f,f.split("/")[3].split(".")[0].split("_")[0],f.split("/")[3].split(".")[0].split("_")[1]] for f in glob.glob("../input/test_sm/*.jpeg")])
+test_files.columns = ['path', 'group', 'pic_no']
+print(len(train_files),len(test_files),len(sample_sub))
+train_images = train_files[train_files["group"]=='set107']
+train_images = train_images.sort_values(by=["pic_no"], ascending=[1]).reset_index(drop=True)
+
+
+train_images = train_files[train_files["group"]=='set4']
+train_images = train_images.sort_values(by=["pic_no"], ascending=[1]).reset_index(drop=True)
+img = cv2.imread(train_images.path[0])
+cv2.imwrite('panoramic2.jpeg',img)
+plt.rcParams['figure.figsize'] = (12.0, 12.0)
+for i in range(1,5):
+    img = im_stitcher(train_images.path[i], 'panoramic2.jpeg', 0.5, False)
+    cv2.imwrite('panoramic2.jpeg',img)
+img[np.where((img < [20,20,20]).all(axis = 2))] = [255,255,255]
+plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB)); plt.axis('off')
 
 if __name__ == '__main__':
     cpu = multiprocessing.cpu_count();
@@ -67,6 +100,7 @@ if __name__ == '__main__':
     df_all['a'] = df_all['individual_im_mean'] - df_all['group_min_im_mean']
     df_all['b'] = df_all['group_max_im_mean'] - df_all['individual_im_mean']
     df_all['c'] = df_all['group_mean'] - df_all['individual_im_mean']
+
     # red
     df_all['group_min_im_mean_r'] = df_all["group"].map(lambda x: df_all[df_all['group'] == x]['rm'].min())
     df_all['group_max_im_mean_r'] = df_all["group"].map(lambda x: df_all[df_all['group'] == x]['rm'].max())
@@ -74,6 +108,7 @@ if __name__ == '__main__':
     df_all['a_r'] = df_all['rm'] - df_all['group_min_im_mean_r']
     df_all['b_r'] = df_all['group_max_im_mean_r'] - df_all['rm']
     # df_all['c_r'] = df_all['group_mean_r'] - df_all['rm']
+
     # green
     df_all['group_min_im_mean_g'] = df_all["group"].map(lambda x: df_all[df_all['group'] == x]['gm'].min())
     df_all['group_max_im_mean_g'] = df_all["group"].map(lambda x: df_all[df_all['group'] == x]['gm'].max())
@@ -81,6 +116,7 @@ if __name__ == '__main__':
     df_all['a_g'] = df_all['gm'] - df_all['group_min_im_mean_g']
     df_all['b_g'] = df_all['group_max_im_mean_g'] - df_all['gm']
     # df_all['c_g'] = df_all['group_mean_g'] - df_all['gm']
+
     # blue
     df_all['group_min_im_mean_b'] = df_all["group"].map(lambda x: df_all[df_all['group'] == x]['bm'].min())
     df_all['group_max_im_mean_b'] = df_all["group"].map(lambda x: df_all[df_all['group'] == x]['bm'].max())

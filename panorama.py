@@ -7,7 +7,7 @@ class Stitcher:
         self.isv3 = imutils.is_cv3()
         # determine if we are using OpenCV 3.x
     def stitch(self,images, ratio=0.75, reprojThresh=4.0):
-    # unpack the inmages, then detect keypoints and extract
+    # unpack the images, then detect keypoints and extract
     # local invariant descriptors from them
         (imageB,imageA) = images
         (kpsA, featuresA) = self.detectAndDescribe(imageA)
