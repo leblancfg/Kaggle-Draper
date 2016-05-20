@@ -140,19 +140,20 @@ end=time.time()
 # img160_5_74_4 = im_stitcher("../input/train/set160_5.tif", "../input/test/set74_4.tif")
 # img160_5_74_5 = im_stitcher("../input/train/set160_5.tif", "../input/test/set74_5.tif")
 
-#np.savetxt('Set160_5_74_1_BRISK_matching.csv',img160_5_74_1, delimiter=",", fmt="%s")
+np.save('Set160_5_74_1_BRISK_matching.npy',img160_5_74_1)
 
-text = ''
-for row in img160_5_74_1:
-    for e in row:
-        text += '{},{},{},{},{},{},'.format(e[0], e[1], e[2], e[3], e[4], e[5])
-    text += '\n'
-
-# Write the string to a file.
-with open('image.csv', 'w') as f:
-    f.write(text)
-
-print "{0} s".format(time.time()-end)
+# This can save the file as a human-readable .txt or .csv, but it's 50x slower.
+# text = ''
+# for row in img160_5_74_1:
+#     for e in row:
+#         text += '{} {} {} {} {} {},'.format(e[0], e[1], e[2], e[3], e[4], e[5])
+#     text += '\n'
+#
+# # Write the string to a file.
+# with open('image.csv', 'w') as f:
+#     f.write(text)
+#
+print "Image took {0} s to save as npy".format(round(time.time()-end),)
 
 # np.savetxt('Set160_5_74_2_BRISK_matching.csv',img160_5_74_2, delimiter=",", fmt="%s")
 # np.savetxt('Set160_5_74_3_BRISK_matching.csv',img160_5_74_3, delimiter=",", fmt="%s")
