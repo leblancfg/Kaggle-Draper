@@ -7,8 +7,8 @@ import imutils
 import cv2
 
 # construct the argument parse and parse the arguments
-imageA = cv2.imread('../input/train/set12_1.tif')
-imageB = cv2.imread('../input/train/set12_3.tif')
+imageA = cv2.imread('../input/train/set223_3.tif')
+imageB = cv2.imread('../input/train/set223_5.tif')
 reading = time.time()
 print('Read Images, time {0}'.format(reading-start))
 

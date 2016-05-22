@@ -133,7 +133,7 @@ def im_stitcher(imp1, imp2, pcntDownsize = 1.0, withTransparency=False):
 #img5_1_68_3 = im_stitcher("../input/train/set5_1.tif", "../input/test/set68_3.tif", 0.4, True)
 #plt.imsave('Set5_1_68_3_BRISK_matching.tif',img5_1_68_3) 
 
-img160_5_74_1 = im_stitcher("../input/train/set160_5.tif", "../input/test/set74_1.tif")
+img160_5_74_1 = im_stitcher("/mnt/hgfs/Kaggle Drapper/train/set78_1.tif", "/mnt/hgfs/Kaggle Drapper/train/set78_5.tif")
 end=time.time()
 # img160_5_74_2 = im_stitcher("../input/train/set160_5.tif", "../input/test/set74_2.tif")
 # img160_5_74_3 = im_stitcher("../input/train/set160_5.tif", "../input/test/set74_3.tif")
