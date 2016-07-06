@@ -7,7 +7,7 @@ import cv2
 import time
 import math
 
-from chipy import  im_stitcher
+from chipy2 import  im_stitcher
 path = "train/"
 numbersoffileperset = 5
 onlyfiles = [f for f in listdir(path) if isfile(join(path,f))]
@@ -19,8 +19,8 @@ for idx,sets in enumerate(composite_list):
         while(j<len(sets)):
             image1 = cv2.imread("{0}".format(path+sets[i]))
             image2 = cv2.imread(path+sets[j])
-            image1 = imutils.resize(image1,width=600)
-            image2 = imutils.resize(image2, width=600)
+            #image1 = imutils.resize(image1,width=600)
+            #image2 = imutils.resize(image2, width=600)
             #-----------------------First compared to second----------------------------#1
             stitched = im_stitcher(image1, image2)
             print("{0} was tested against {1}".format(sets[i], sets[j]))
@@ -38,11 +38,14 @@ for idx,sets in enumerate(composite_list):
                     splitted = stitched[sx:sx+steps,sy:sy+steps,:]
                     if np.any(splitted):
                         #1
-                        print('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/1/BRISK_matching_{0}_vs_{1}_{2}_{3}.npy'.format(sets[i][:-4], sets[j][:-4],x,y))
-                        np.save('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/1/BRISK_matching_{0}_vs_{1}_{2}_{3}.npy'.format(sets[i][:-4], sets[j][:-4],x,y),splitted)
-                    else :
-                        print "Array is empty"
-                    #2
-                    #print('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/0/BRISK_matching_{0}_vs_{1}_{2}_{3}.npy'.format(sets[j][:-4], sets[i][:-4], x, y))
-                    #np.save('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/0/BRISK_matching_{0}_vs_{1}_{2}_{3}.npy'.format(sets[j][:-4],sets[i][:-4],x,y),splitted)
+                        if not os.path.exists('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/1/BRISK_matching_{0}_vs_{1}'.format(sets[i][:-4], sets[j][:-4])):
+                            os.makedirs('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/1/BRISK_matching_{0}_vs_{1}'.format(sets[i][:-4], sets[j][:-4]))
+                            print '/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/1/BRISK_matching_{0}_vs_{1}'.format(sets[i][:-4], sets[j][:-4]), ' created'
+                        np.save('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/1/BRISK_matching_{0}_vs_{1}/{2}_{3}.npy'.format(sets[i][:-4], sets[j][:-4],x,y),splitted)
+
+                        #2
+                        #if not os.path.exists('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/0/BRISK_matching_{0}_vs_{1}'.format(sets[j][:-4],sets[i][:-4])):
+                        #    os.makedirs('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/0/BRISK_matching_{0}_vs_{1}'.format(sets[j][:-4],sets[i][:-4]))
+                        #    print '/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/0/BRISK_matching_{0}_vs_{1}'.format(sets[j][:-4],sets[i][:-4]), ' created'
+                        #np.save('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/0/BRISK_matching_{0}_vs_{1}/{2}_{3}.npy'.format(sets[j][:-4],sets[i][:-4],x,y),splitted)
             j += 1

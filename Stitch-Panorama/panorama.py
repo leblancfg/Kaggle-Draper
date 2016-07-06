@@ -1,6 +1,7 @@
 import numpy as np
 #import imutils
 import cv2
+from osgeo import ogr
 
 class Stitcher:
     #def __init__(self):
@@ -26,14 +27,41 @@ class Stitcher:
         #cv2.addWeighted(imageBTran, 0.6, imageB, 0.6, -1, imageBTran)
 
         #/Transparency
-        result = cv2.warpPerspective(imageA, H,(imageA.shape[1]+imageB.shape[1],imageA.shape[0]+imageB.shape[0]))
+        result = cv2.warpPerspective(imageA, H,(imageA.shape[1],imageA.shape[0]))
         #result[0:imageB.shape[0],0:imageB.shape[1]] = imageBTran
         #result = cv2.warpPerspective(imageATran, H,(imageA.shape[1]+imageB.shape[1],imageA.shape[0]))
         #result[0:imageB.shape[0],0:imageB.shape[1]] = imageBTran
         (hC, wC) = result.shape[:2]
         resultTran = np.zeros((hC,wC,3), np.uint8)
         resultTran[0:imageB.shape[0],0:imageB.shape[1]] = imageB
-        result = cv2.addWeighted(result,0.6,resultTran,0.6,0)
+
+        # Creating the mask
+        # Getting the points in wkt format
+        wkt1 = "POLYGON (({0} {1}, {2} {3}, {4} {5}, {6} {7}, {0} {1}))".format(pts1[0][0][0], pts1[0][0][1], pts1[1][0][0],
+                                                                                pts1[1][0][1], pts1[2][0][0], pts1[2][0][1],
+                                                                                pts1[3][0][0], pts1[3][0][1])
+        wkt2 = "POLYGON (({0} {1}, {2} {3}, {4} {5}, {6} {7}, {0} {1}))".format(pts2_[0][0][0], pts2_[0][0][1],
+                                                                                pts2_[1][0][0], pts2_[1][0][1],
+                                                                                pts2_[2][0][0], pts2_[2][0][1],
+                                                                                pts2_[3][0][0], pts2_[3][0][1])
+        # Creating the polygons
+        poly1 = ogr.CreateGeometryFromWkt(wkt1)
+        poly2 = ogr.CreateGeometryFromWkt(wkt2)
+        # Finding the intersected area
+        intersection = poly1.Intersection(poly2)
+        overlapWKTformat = intersection.ExportToWkt()
+        # Parsing
+        overlapCoordinate = np.array(np.int32(
+            np.float32([points.split(' ') for points in overlapWKTformat[10:len(overlapWKTformat) - 2].split(',')])))
+        maskB = np.zeros((imageA.shape[0], imageA.shape[1]))
+        out = cv2.fillConvexPoly(maskB, overlapCoordinate, 1)
+        cv2.imshow("resultTran",resultTran)
+        cv2.imshow("result",result)
+        cv2.imshow("out",out)
+
+        #result = cv2.addWeighted(result,0.6,resultTran,0.6,0)
+        #cv2.imshow("final",result)
+        cv2.waitKey(0)
         return result
 
     def detectAndDescribe(self, image):

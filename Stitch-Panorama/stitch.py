@@ -7,8 +7,10 @@ import imutils
 import cv2
 
 # construct the argument parse and parse the arguments
-imageA = cv2.imread('../input/train/set223_3.tif')
-imageB = cv2.imread('../input/train/set223_5.tif')
+imageA = cv2.imread('/mnt/hgfs/Kaggle Drapper/train/set4_1.tif')
+imageB = cv2.imread('/mnt/hgfs/Kaggle Drapper/train/set4_5.tif')
+imageA = imutils.resize(imageA,width=600)
+imageB = imutils.resize(imageB,width=600)
 reading = time.time()
 print('Read Images, time {0}'.format(reading-start))
 
@@ -27,4 +29,4 @@ print("Finished stitching in {0}".format(end-reading))
 print("Time to show")
 #cv2.imshow("image a", imageA)
 #cv2.imshow("image b", imageB)
-cv2.imwrite("test.png",imutils.resize(result,width=500))
+#cv2.imwrite("test.png",imutils.resize(result,width=500))
