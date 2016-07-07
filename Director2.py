@@ -7,7 +7,7 @@ import cv2
 import time
 import math
 
-from chipy2 import  im_stitcher
+from chipy2 import im_stitcher
 path = "train/"
 numbersoffileperset = 5
 onlyfiles = [f for f in listdir(path) if isfile(join(path,f))]
