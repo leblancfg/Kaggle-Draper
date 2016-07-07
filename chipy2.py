@@ -95,6 +95,6 @@ def im_stitcher(image1, image2, pcntDownsize=1.0, withTransparency=False):
     im = np.dstack((im, bim))
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-    #return (im)
+    return (im)
 
 
