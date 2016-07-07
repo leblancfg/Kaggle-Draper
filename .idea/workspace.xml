@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d85d72c-e686-4e01-99cd-eb7fa9382959" name="Default" comment="Pushing newly created stuffs.">
+    <list default="true" id="5d85d72c-e686-4e01-99cd-eb7fa9382959" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chipy2.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Director2.py" afterPath="$PROJECT_DIR$/Director2.py" />
@@ -618,17 +618,24 @@
       <option name="project" value="LOCAL" />
       <updated>1467771287988</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Les deux scripts sont a jour!">
+      <created>1467899319711</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1467899319711</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1535" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21368079" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.49771988" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2117061" sideWeight="0.5127036" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2117061" sideWeight="0.5127036" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2113127" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -661,7 +668,8 @@
     <MESSAGE value="changed use of _sm .jpeg images to the high-def .tif files. Hoping the numeric values won't be affected by pixel ratio change. If that happens, need to multiply those values by the image size ratio." />
     <MESSAGE value="New &quot;Chippy's script&quot;, takes full tiffs and saves them as 6-layer Numpy arrays (.npy). 11 secs per image pair locally." />
     <MESSAGE value="Pushing newly created stuffs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pushing newly created stuffs." />
+    <MESSAGE value="Les deux scripts sont a jour!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Les deux scripts sont a jour!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
