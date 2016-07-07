@@ -6,9 +6,14 @@ import os
 import cv2
 import time
 import math
-
+'''
+This script assumes standard Kaggle Script directory hierarchy:
+/input/train/
+/input/test/
+/scripts/Director2.py <- YOU ARE HERE
+'''
 from chipy2 import im_stitcher
-path = "train/"
+path = "../input/train/"
 numbersoffileperset = 5
 onlyfiles = [f for f in listdir(path) if isfile(join(path,f))]
 composite_list = [onlyfiles[x:x+numbersoffileperset] for x in range(0,len(onlyfiles),numbersoffileperset)]
@@ -38,14 +43,15 @@ for idx,sets in enumerate(composite_list):
                     splitted = stitched[sx:sx+steps,sy:sy+steps,:]
                     if np.any(splitted):
                         #1
-                        if not os.path.exists('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/1/BRISK_matching_{0}_vs_{1}'.format(sets[i][:-4], sets[j][:-4])):
-                            os.makedirs('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/1/BRISK_matching_{0}_vs_{1}'.format(sets[i][:-4], sets[j][:-4]))
-                            print '/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/1/BRISK_matching_{0}_vs_{1}'.format(sets[i][:-4], sets[j][:-4]), ' created'
-                        np.save('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/1/BRISK_matching_{0}_vs_{1}/{2}_{3}.npy'.format(sets[i][:-4], sets[j][:-4],x,y),splitted)
+                        if not os.path.exists('../input/train/npy/1/BRISK_matching_{0}_vs_{1}'.format(sets[i][:-4], sets[j][:-4])):
+                            os.makedirs('../input/train/npy/1/BRISK_matching_{0}_vs_{1}'.format(sets[i][:-4], sets[j][:-4]))
+                            print '../input/train/npy/1/BRISK_matching_{0}_vs_{1}'.format(sets[i][:-4], sets[j][:-4]), ' created'
+                        np.save('../input/train/npy/1/BRISK_matching_{0}_vs_{1}/{2}_{3}.npy'.format(sets[i][:-4], sets[j][:-4],x,y),splitted)
+
 
                         #2
-                        #if not os.path.exists('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/0/BRISK_matching_{0}_vs_{1}'.format(sets[j][:-4],sets[i][:-4])):
-                        #    os.makedirs('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/0/BRISK_matching_{0}_vs_{1}'.format(sets[j][:-4],sets[i][:-4]))
-                        #    print '/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/0/BRISK_matching_{0}_vs_{1}'.format(sets[j][:-4],sets[i][:-4]), ' created'
-                        #np.save('/mnt/hgfs/Kaggle Drapper/Kaggle-Draper2/train/npy/0/BRISK_matching_{0}_vs_{1}/{2}_{3}.npy'.format(sets[j][:-4],sets[i][:-4],x,y),splitted)
+                        #if not os.path.exists('../input/train/npy/0/BRISK_matching_{0}_vs_{1}'.format(sets[j][:-4],sets[i][:-4])):
+                        #    os.makedirs('../input/train/npy/0/BRISK_matching_{0}_vs_{1}'.format(sets[j][:-4],sets[i][:-4]))
+                        #    print '../input/train/npy/0/BRISK_matching_{0}_vs_{1}'.format(sets[j][:-4],sets[i][:-4]), ' created'
+                        #np.save('../input/train/npy/0/BRISK_matching_{0}_vs_{1}/{2}_{3}.npy'.format(sets[j][:-4],sets[i][:-4],x,y),splitted)
             j += 1

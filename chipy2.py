@@ -90,11 +90,7 @@ def im_stitcher(image1, image2, pcntDownsize=1.0, withTransparency=False):
     bim = bim[ymin:ymax,xmin:xmax]
     print("Image took {0} s to complete.".format(round(time.time() - start, 1)))
     end = time.time()
-    cv2.imshow("im",im)
-    cv2.imshow("bim",bim)
     im = np.dstack((im, bim))
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
     return (im)
 
 
