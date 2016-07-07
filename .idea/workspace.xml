@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5d85d72c-e686-4e01-99cd-eb7fa9382959" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stitchDirector.py" afterPath="$PROJECT_DIR$/stitchDirector.py" />
     </list>
     <ignored path="Kaggle-Draper.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,8 +80,8 @@
       <file leaf-file-name="stitchDirector.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stitchDirector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="125" column="40" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="40" />
+            <state relative-caret-position="213">
+              <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -639,7 +638,14 @@
       <option name="project" value="LOCAL" />
       <updated>1467900210608</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Bon, je croit que tout est a jour (Enfin, j'ai passer la journée a travailler pour que CE commit contienne tous les scripts a jour&#10;---------------------------------------&#10;Director2 -&gt; Passe au travers de tous les train set, les passe dans chipy2.im_stitchers, les divise en plusieurs petits fichiers de 32x32 (sauf les bouts, qui sont un peu plus petit) et les sauvegarde selon le schéma suivant : &#10;input/train/npy/1/BRISK_matching_(X)_vs_(Y)/(col)_(row).npy  ==&gt;Si X est avant Y&#10;input/train/npy/0/BRISK_matching_(X)_vs_(Y)/(col)_(row).npy  ==&gt;Si X est apres Y&#10;---------------------------------------&#10;chipy2 -&gt; Match les deux images qui lui sont envoyé, il les stacks (La première envoyée se retrouve sur le dessus, la deuxième en dessous) et crop l'image pour que seulement les éléments se superposant dans les deux images soit visible et revoit l'information&#10;---------------------------------------&#10;stichDirector&#10;la description se retrouve dans le fichier">
+      <created>1467918630127</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1467918630127</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -683,7 +689,8 @@
     <MESSAGE value="New &quot;Chippy's script&quot;, takes full tiffs and saves them as 6-layer Numpy arrays (.npy). 11 secs per image pair locally." />
     <MESSAGE value="Pushing newly created stuffs." />
     <MESSAGE value="Les deux scripts sont a jour!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Les deux scripts sont a jour!" />
+    <MESSAGE value="Bon, je croit que tout est a jour (Enfin, j'ai passer la journée a travailler pour que CE commit contienne tous les scripts a jour&#10;---------------------------------------&#10;Director2 -&gt; Passe au travers de tous les train set, les passe dans chipy2.im_stitchers, les divise en plusieurs petits fichiers de 32x32 (sauf les bouts, qui sont un peu plus petit) et les sauvegarde selon le schéma suivant : &#10;input/train/npy/1/BRISK_matching_(X)_vs_(Y)/(col)_(row).npy  ==&gt;Si X est avant Y&#10;input/train/npy/0/BRISK_matching_(X)_vs_(Y)/(col)_(row).npy  ==&gt;Si X est apres Y&#10;---------------------------------------&#10;chipy2 -&gt; Match les deux images qui lui sont envoyé, il les stacks (La première envoyée se retrouve sur le dessus, la deuxième en dessous) et crop l'image pour que seulement les éléments se superposant dans les deux images soit visible et revoit l'information&#10;---------------------------------------&#10;stichDirector&#10;la description se retrouve dans le fichier" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bon, je croit que tout est a jour (Enfin, j'ai passer la journée a travailler pour que CE commit contienne tous les scripts a jour&#10;---------------------------------------&#10;Director2 -&gt; Passe au travers de tous les train set, les passe dans chipy2.im_stitchers, les divise en plusieurs petits fichiers de 32x32 (sauf les bouts, qui sont un peu plus petit) et les sauvegarde selon le schéma suivant : &#10;input/train/npy/1/BRISK_matching_(X)_vs_(Y)/(col)_(row).npy  ==&gt;Si X est avant Y&#10;input/train/npy/0/BRISK_matching_(X)_vs_(Y)/(col)_(row).npy  ==&gt;Si X est apres Y&#10;---------------------------------------&#10;chipy2 -&gt; Match les deux images qui lui sont envoyé, il les stacks (La première envoyée se retrouve sur le dessus, la deuxième en dessous) et crop l'image pour que seulement les éléments se superposant dans les deux images soit visible et revoit l'information&#10;---------------------------------------&#10;stichDirector&#10;la description se retrouve dans le fichier" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -796,8 +803,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stitchDirector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="125" column="40" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="40" />
+        <state relative-caret-position="213">
+          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
           <folding />
         </state>
       </provider>
