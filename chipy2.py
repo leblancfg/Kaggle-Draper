@@ -101,7 +101,6 @@ def im_stitcher(image1, image2, pcntDownsize=1.0, withTransparency=False):
 
     # Subtract the two images, to save as a single, RGB-like, 3-channel matrix
     im = np.subtract(im, bim)
-
     print("Image took {0} s to complete.".format(round(time.time() - start, 1)))
     return im
 
