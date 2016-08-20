@@ -100,8 +100,11 @@ def im_stitcher(image1, image2, pcntDownsize=1.0, withTransparency=False):
     bim = bim[ymin:ymax, xmin:xmax]
 
     # Subtract the two images, to use as a single, RGB-like, 3-channel matrix
+    # cv2.imwrite('im1.jpg', im)
+    # hist = cv2.calcHist([im], [0], None, [256], [0, 256])
+    # cv2.imwrite('hist1.jpg', hist)
     im = cv2.absdiff(im, bim)
-
+    # cv2.imwrite('im2.jpg', im)
     print("Image took {0} s to complete.".format(round(time.time() - start, 1)))
     return im
 
