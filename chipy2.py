@@ -1,7 +1,7 @@
 from osgeo import ogr
 import numpy as np
 import cv2
-#import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import time
 
 print(cv2.__version__)
@@ -64,8 +64,8 @@ def im_stitcher(image1, image2, pcntDownsize=1.0, withTransparency=False):
     bim = np.zeros((h3, w3, 3), np.uint8)
     bim[t[1]:h1 + t[1], t[0]:w1 + t[0]] = img1
 
-    #Creating the mask
-    #Getting the points in wkt format
+    # Creating the mask
+    # Getting the points in wkt format
     wkt1 = "POLYGON (({0} {1}, {2} {3}, {4} {5}, {6} {7}, {0} {1}))".\
         format(pts1[0][0][0]+t[0], pts1[0][0][1]+t[1], pts1[1][0][0]+t[0], pts1[1][0][1]+t[1],
                pts1[2][0][0]+t[0], pts1[2][0][1]+t[1], pts1[3][0][0]+t[0], pts1[3][0][1]+t[1])
@@ -99,8 +99,9 @@ def im_stitcher(image1, image2, pcntDownsize=1.0, withTransparency=False):
     im = im[ymin:ymax, xmin:xmax]
     bim = bim[ymin:ymax, xmin:xmax]
 
-    # Subtract the two images, to save as a single, RGB-like, 3-channel matrix
-    im = np.subtract(im, bim)
+    # Subtract the two images, to use as a single, RGB-like, 3-channel matrix
+    im = cv2.absdiff(im, bim)
+
     print("Image took {0} s to complete.".format(round(time.time() - start, 1)))
     return im
 
