@@ -2,9 +2,9 @@ from osgeo import ogr
 import numpy as np
 import cv2
 # import matplotlib.pyplot as plt
-import time
+# import time
 
-print(cv2.__version__)
+print('OpenCV version: ' + cv2.__version__)
 
 
 def flattenImage(im):
@@ -14,7 +14,7 @@ def flattenImage(im):
 
 
 def im_stitcher(image1, image2, pcntDownsize=1.0, withTransparency=False):
-    start = time.time()
+    # start = time.time()
 
     # perform the resizing of the image by pcntDownsize and create a Grayscale version
     dim1 = (int(image1.shape[1] * pcntDownsize), int(image1.shape[0] * pcntDownsize))
@@ -49,7 +49,7 @@ def im_stitcher(image1, image2, pcntDownsize=1.0, withTransparency=False):
     pts2 = np.float32([[0, 0], [0, h2], [w2, h2], [w2, 0]]).reshape(-1, 1, 2)
     pts2_ = cv2.perspectiveTransform(pts2, H)
 
-    #calculate the height and the width of the final image
+    # calculate the height and the width of the final image
     pts = np.concatenate((pts1, pts2_), axis=0)
     [xmin, ymin] = np.int32(pts.min(axis=0).ravel() - 0.5)
     [xmax, ymax] = np.int32(pts.max(axis=0).ravel() + 0.5)
@@ -105,7 +105,8 @@ def im_stitcher(image1, image2, pcntDownsize=1.0, withTransparency=False):
     # cv2.imwrite('hist1.jpg', hist)
     im = cv2.absdiff(im, bim)
     # cv2.imwrite('im2.jpg', im)
-    print("Image took {0} s to complete.".format(round(time.time() - start, 1)))
+    # print("Image took {0} s to complete.".format(round(time.time() - start, 1)))
+    print ".",
     return im
 
 

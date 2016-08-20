@@ -27,20 +27,15 @@ if not exists('{0}slice'.format(path)):
     makedirs('{0}slice'.format(path))
 
 # Initialize the stack of training slices
-
 for idx, sets in enumerate(composite_list):
     setNumber = "".join(re.findall(r'set(.*?)_', sets[0]))
-    print("{0}|{1}".format(idx, len(composite_list)))
+    print("\rAnalyzing set {0} of {1}".format(idx, len(composite_list))),
     for i in range(len(sets)):
         j = i + 1
         while j < len(sets):
             image1 = cv2.imread(path + sets[i])
             image2 = cv2.imread(path + sets[j])
             stitched = im_stitcher(image1, image2)
-            # this is for test purpose, resize to 600*450
-            # stitched = im_stitcher(imutils.resize(image1,width=600), imutils.resize(image2,width=600))
-            # train_stack = [np.zeros((pixels, pixels, 3), dtype=np.uint8)]
-            # firstrun = True
             cols = len(stitched)
             rows = len(stitched[0])
             splitted = np.zeros((pixels, pixels, 3), dtype=np.uint8)
@@ -53,14 +48,14 @@ for idx, sets in enumerate(composite_list):
 
                     # TODO: Use matrix from stitchDirector to keep track of TARGET for each one of these slices.
 
-                    # Keep only if > 50% of slice is non-zero
-                    is_non_empty = len(splitted[np.where(splitted > 0)]) > (pixels ** 2) * 0.50
+                    # Keep only if > 1/3 of slice is non-zero
+                    is_non_empty = len(splitted[np.where(splitted > 0)]) > (pixels ** 2) * 0.33
                     # And if image is a square
                     is_square = widthOfImage == heightOfImage
 
                     if is_non_empty and is_square:
                         filename = '{4}slice/set{5}_{0}_{1}_{2}_{3}.png'.format(i+1, j+1, x, y, path, setNumber)
-                        print filename
+                        # print filename
                         cv2.imwrite(filename, splitted)
 
             # np.save('{0}npy/set{1}_{2}_vs_{3}.npy'.format(path, setNumber, i+1, j+1), train_stack)
